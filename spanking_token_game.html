@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Spanking Token Game</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    .button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome, Mistress!</h1>
+  <h2>Your Points: <span id="points">0</span></h2>
+
+  <button class="button" onclick="askPuzzle()">Solve Puzzle (+500 points)</button>
+  <br>
+  <button class="button" onclick="redeem('tigerwood')">Redeem 2 mins with Tigerwood (-2500)</button>
+
+  <script>
+    let points = 0;
+
+    function updatePoints() {
+      document.getElementById("points").innerText = points;
+    }
+
+    function askPuzzle() {
+      const answer = prompt("I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?");
+      if (answer && answer.toLowerCase().includes("echo")) {
+        alert("Correct! You earned 500 points.");
+        points += 500;
+        updatePoints();
+      } else {
+        alert("Not quite. Try again later!");
+      }
+    }
+
+    function redeem(type) {
+      if (type === "tigerwood" && points >= 2500) {
+        points -= 2500;
+        alert("Redeemed! 2 minutes with the Tigerwood paddle awaits.");
+        updatePoints();
+      } else {
+        alert("Not enough points!");
+      }
+    }
+
+    updatePoints();
+  </script>
+</body>
+</html>
